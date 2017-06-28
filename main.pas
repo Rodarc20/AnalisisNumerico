@@ -83,66 +83,87 @@ begin
 end;
 
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
+var entrada: TStringList;
+var i: integer;
 begin
-    if Input='hola' then
+    entrada:=TStringList.Create;
+    entrada.Delimiter := ' ';
+    entrada.DelimitedText:=Input;
+    {i:=0; 
+    while i < entrada.Count do
+    begin
+        LineaComando.Writeln(entrada[i]);
+        i := i+1;
+    end;}
+    if entrada[0]='hola' then
     begin
         LineaComando.Writeln('Hola');
+        i:=1; 
+        while i < entrada.Count do
+        begin
+            LineaComando.Writeln(entrada[i]);
+            i := i+1;
+        end;
     end
-    else if Input='biseccion' then
+    else if entrada[0]='biseccion' then
     begin
         LineaComando.Writeln('biseccion');
     end
-    else if Input='falsaposicion' then
+    else if entrada[0]='falsaposicion' then
     begin
         LineaComando.Writeln('falsaposicion');
     end
-    else if Input='secante' then
+    else if entrada[0]='secante' then
     begin
         LineaComando.Writeln('secante');
     end
-    else if Input='puntofijo' then
+    else if entrada[0]='puntofijo' then
     begin
         LineaComando.Writeln('puntofijo');
     end
-    else if Input='newton' then
+    else if entrada[0]='newton' then
     begin
         LineaComando.Writeln('newton');
     end
-    else if Input='lagrange' then
+    else if entrada[0]='lagrange' then
     begin
         LineaComando.Writeln('lagrange');
     end
-    else if Input='trapecio' then
+    else if entrada[0]='trapecio' then
     begin
         LineaComando.Writeln('trapecio');
     end
-    else if Input='simpson1/3' then
+    else if entrada[0]='simpson1/3' then
     begin
         LineaComando.Writeln('simpson1/3');
     end
-    else if Input='simpson3/8' then
+    else if entrada[0]='simpson3/8' then
     begin
         LineaComando.Writeln('simpson3/8');
     end
-    else if Input='euler' then
+    else if entrada[0]='euler' then
     begin
         LineaComando.Writeln('euler');
     end
-    else if Input='heun' then
+    else if entrada[0]='heun' then
     begin
         LineaComando.Writeln('heun');
     end
-    else if Input='rungekutta' then
+    else if entrada[0]='rungekutta' then
     begin
         LineaComando.Writeln('rungekutta');
     end
-    else if Input='dormandprince' then
+    else if entrada[0]='dormandprince' then
     begin
         LineaComando.Writeln('dormandprince');
     end
-    else if Input='newtongeneralizado' then
+    else if entrada[0]='newtongeneralizado' then
     begin
         LineaComando.Writeln('newtongeneralizado');
+    end
+    else if entrada[0]='clear' then
+    begin
+        LineaComando.Clear;
     end
     else
     begin

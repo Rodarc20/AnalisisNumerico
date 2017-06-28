@@ -20,7 +20,6 @@
         <IsVisibleTab Value="True"/>
         <TopLine Value="50"/>
         <CursorPos X="82" Y="66"/>
-        <ComponentState Value="2"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -34,26 +33,26 @@
         <UsageCount Value="24"/>
       </Unit2>
       <Unit3>
-        <Filename Value="unit1.lfm"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="38" Y="16"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit3>
-      <Unit4>
-        <Filename Value="minilab.lpi"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="69"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="XML"/>
-      </Unit4>
-      <Unit5>
         <Filename Value=".gitignore.txt"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="6" Y="5"/>
         <UsageCount Value="20"/>
         <DefaultSyntaxHighlighter Value="None"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="unit1.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="38" Y="16"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="minilab.lpi"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="69"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
       </Unit5>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
