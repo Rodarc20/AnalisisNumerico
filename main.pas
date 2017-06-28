@@ -10,7 +10,7 @@ uses
   spkt_Buttons, uCmdBox, GridHandler,ChartHandler,
   Functions, Matrix, Bisection, FalsePosition, Secant,
   FixedPoint, Newton, Lagrange, RiemannSum, Simpson, Euler, Heun, RungeKutta,
-  DormandPrince;
+  DormandPrince, GeneralizedNewton;
 
 type
 
@@ -71,6 +71,7 @@ type
       heun: THeun;
       rungekutta: TRungeKutta;
       dormandprince: TDormandPrince;
+      generalizednewton: TGeneralizedNewton;
       gridhandler: TGridHandler;
       charthandler: TChartHandler;
     { private declarations }
@@ -88,6 +89,12 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 DoubleBuffered := True;
+    LineaComando.Writeln('Hola');
+    LineaComando.TextColors(clWhite,clBlue); 
+    LineaComando.Writeln('Hola');
+    ShowMessage('Construido');
+    LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clWhite,clBlack);
+    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     {LineaComando.StartRead(clSilver,clNavy,'/example/prompt/>',clYellow,clNavy);
  LineaComando.TextColors(clWhite,clNavy);
  LineaComando.Writeln(#27#218#27#10#191);
@@ -106,8 +113,6 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-    gridhandler:= TGridHandler.Create(resultTable);
-    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
@@ -132,7 +137,9 @@ end;
 
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
 var entrada: TStringList;
+var equations: TEquationsList;
 var puntos: TMatriz;
+var values: TNumericMatrix;
 var resul: TNumericMatrix;
 var resultado: TArray;
 var i: integer;
@@ -179,8 +186,10 @@ begin
 
           Active:= True;
         end;
+        gridhandler:= TGridHandler.Create(resultTable);
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'bisection');
+        gridhandler.destroy();
         {charthandler.fillchart(resul);}
     end
     else if entrada[0]='falsaposicion' then
@@ -204,8 +213,6 @@ begin
 
           Active:= True;
         end;
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'false-position');
     end
     else if entrada[0]='secante' then
     begin
@@ -227,8 +234,6 @@ begin
 
           Active:= True;
         end;
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'secant');
     end
     else if entrada[0]='puntofijo' then
     begin
@@ -238,20 +243,7 @@ begin
         LineaComando.Writeln('puntofijo');
         puntofijo.Destroy;
         funcionString := entrada[1];
-        with Funcion do begin
-          Active:= False;
 
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
-
-          Extent.UseXMax:= true;
-          Extent.UseXMin:= true;
-          Funcion.Pen.Color:=  clBlue;
-
-          Active:= True;
-        end;
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'fixed-point');
     end
     else if entrada[0]='newton' then
     begin
@@ -273,8 +265,6 @@ begin
 
           Active:= True;
         end;
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'newton');
     end
     else if entrada[0]='lagrange' then
     begin
@@ -309,6 +299,19 @@ begin
     else if entrada[0]='newtongeneralizado' then
     begin
         LineaComando.Writeln('newtongeneralizado');
+        SetLength(equations, 2);
+        SetLength(values, 2, 1);
+        equations[0] := entrada[1];
+        equations[1] := entrada[2];
+        values[0][0] := StrToFloat(entrada[3]);
+        values[1][0] := StrToFloat(entrada[4]);
+        generalizednewton := TGeneralizedNewton.Create(equations, values, StrToFloat(entrada[5]));
+        resul := generalizednewton.execute();
+        generalizednewton.destroy;
+        gridhandler:= TGridHandler.Create(resultTable);
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'gen-newton');
+        gridhandler.destroy();
     end
     else if entrada[0]='trapecio' then
     begin
@@ -330,32 +333,15 @@ begin
           Active:= True;
         end;
         trapecio.Destroy;
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'riemann');
     end
     else if entrada[0]='simpson1/3' then
     begin
         {ecuacion, a, b, n}
-        LineaComando.Writeln('simpson1/3');
+        LineaComando.Writeln('simpson1/8');
         simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         res:= simpson.simpson13();
         LineaComando.Writeln(FloatToStr(res));
         simpson.Destroy;
-        funcionintegrarString:=entrada[1];
-        with FuncionIntegrar do begin
-          Active:= False;
-
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
-
-          Extent.UseXMax:= true;
-          Extent.UseXMin:= true;
-          FuncionIntegrar.Pen.Color:=  clBlue;
-
-          Active:= True;
-        end;
-        {gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'simpson13');}
     end
     else if entrada[0]='simpson3/8' then
     begin
@@ -365,21 +351,6 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         simpson.Destroy;
         LineaComando.Writeln('simpson3/8');
-        funcionintegrarString:=entrada[1];
-        with FuncionIntegrar do begin
-          Active:= False;
-
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
-
-          Extent.UseXMax:= true;
-          Extent.UseXMin:= true;
-          FuncionIntegrar.Pen.Color:=  clBlue;
-
-          Active:= True;
-        end;
-        {gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'simpson38');}
     end
     else if entrada[0]='euler' then
     begin
@@ -389,8 +360,6 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         euler.Destroy;
         LineaComando.Writeln('euler');
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'euler');
     end
     else if entrada[0]='heun' then
     begin
@@ -400,8 +369,6 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         heun.Destroy;
         LineaComando.Writeln('heun');
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'heun');
     end
     else if entrada[0]='rungekutta' then
     begin
@@ -411,8 +378,6 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         rungekutta.Destroy;
         LineaComando.Writeln('rungekutta');
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'runge-kutta');
     end
     else if entrada[0]='dormandprince' then
     begin
@@ -422,8 +387,6 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         dormandprince.Destroy;
         LineaComando.Writeln('dormandprince');
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'dormand-prince');
     end
     else if entrada[0]='clear' then
     begin
