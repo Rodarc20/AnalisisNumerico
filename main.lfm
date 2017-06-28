@@ -48,8 +48,77 @@ object Form1: TForm1
     Appearance.Element.ActiveInnerDarkColor = 961020
     Appearance.Element.ActiveCaptionColor = 8405614
     Appearance.Element.Style = esRounded
-    TabIndex = -1
-    Tabs = (    )
+    TabIndex = 0
+    Tabs = (
+      'SpkTab1'
+    )
+    object SpkTab1: TSpkTab
+      CustomAppearance.Tab.TabHeaderFont.Color = 9126421
+      CustomAppearance.Tab.BorderColor = 14922381
+      CustomAppearance.Tab.GradientFromColor = 16115934
+      CustomAppearance.Tab.GradientToColor = 15587527
+      CustomAppearance.Tab.GradientType = bkConcave
+      CustomAppearance.Tab.InactiveTabHeaderFontColor = 9126421
+      CustomAppearance.Pane.BorderDarkColor = 14335646
+      CustomAppearance.Pane.BorderLightColor = 16315117
+      CustomAppearance.Pane.CaptionBgColor = 15849922
+      CustomAppearance.Pane.CaptionFont.Color = 9126421
+      CustomAppearance.Pane.GradientFromColor = 16115934
+      CustomAppearance.Pane.GradientToColor = 15587527
+      CustomAppearance.Pane.GradientType = bkConcave
+      CustomAppearance.Element.CaptionFont.Color = clMenuText
+      CustomAppearance.Element.IdleFrameColor = 14727067
+      CustomAppearance.Element.IdleGradientFromColor = 15653832
+      CustomAppearance.Element.IdleGradientToColor = 15323324
+      CustomAppearance.Element.IdleGradientType = bkConcave
+      CustomAppearance.Element.IdleInnerLightColor = 15852501
+      CustomAppearance.Element.IdleInnerDarkColor = 15520702
+      CustomAppearance.Element.IdleCaptionColor = 11631958
+      CustomAppearance.Element.HotTrackFrameColor = 10211293
+      CustomAppearance.Element.HotTrackGradientFromColor = 14351615
+      CustomAppearance.Element.HotTrackGradientToColor = 5101567
+      CustomAppearance.Element.HotTrackGradientType = bkConcave
+      CustomAppearance.Element.HotTrackInnerLightColor = 12972543
+      CustomAppearance.Element.HotTrackInnerDarkColor = 8045272
+      CustomAppearance.Element.HotTrackCaptionColor = 8864367
+      CustomAppearance.Element.HotTrackBrightnessChange = 40
+      CustomAppearance.Element.ActiveFrameColor = 5535371
+      CustomAppearance.Element.ActiveGradientFromColor = 7126014
+      CustomAppearance.Element.ActiveGradientToColor = 4035324
+      CustomAppearance.Element.ActiveGradientType = bkConcave
+      CustomAppearance.Element.ActiveInnerLightColor = 961020
+      CustomAppearance.Element.ActiveInnerDarkColor = 961020
+      CustomAppearance.Element.ActiveCaptionColor = 8405614
+      CustomAppearance.Element.Style = esRounded
+      Caption = 'Tab'
+      OverrideAppearance = False
+      Visible = True
+      Panes = (
+        'SpkPane1'
+      )
+      object SpkPane1: TSpkPane
+        Caption = 'Pane'
+        Visible = True
+        Items = (
+          'chartButton'
+          'tableButton'
+        )
+        object chartButton: TSpkLargeButton
+          Visible = True
+          Enabled = True
+          Caption = 'Show Chart'
+          OnClick = chartButtonClick
+          ButtonKind = bkButton
+        end
+        object tableButton: TSpkLargeButton
+          Visible = True
+          Enabled = True
+          Caption = 'Show Table'
+          OnClick = tableButtonClick
+          ButtonKind = bkButton
+        end
+      end
+    end
   end
   object LineaComando: TCmdBox
     Left = 0
@@ -87,6 +156,10 @@ object Form1: TForm1
       item
         Grid.Color = clSilver
         Minors = <>
+        Range.Max = 5
+        Range.Min = -5
+        Range.UseMax = True
+        Range.UseMin = True
         Title.LabelFont.Orientation = 900
       end    
       item
@@ -96,6 +169,10 @@ object Form1: TForm1
         Alignment = calBottom
         Minors = <>
         Position = 5
+        Range.Max = 5
+        Range.Min = -5
+        Range.UseMax = True
+        Range.UseMin = True
       end>
     BackColor = clWhite
     Foot.Brush.Color = clBtnFace
@@ -252,5 +329,16 @@ object Form1: TForm1
       OnClick = Button4Click
       TabOrder = 6
     end
+  end
+  object resultTable: TStringGrid
+    Left = 0
+    Height = 711
+    Top = 112
+    Width = 1606
+    ColCount = 0
+    FixedCols = 0
+    FixedRows = 0
+    RowCount = 0
+    TabOrder = 4
   end
 end
