@@ -67,7 +67,7 @@ DoubleBuffered := True;
     LineaComando.TextColors(clWhite,clBlue); 
     LineaComando.Writeln('Hola');
     ShowMessage('Construido');
-    LineaComando.StartRead(clSilver,clBlack,'/MiniLab/>',clWhite,clBlack);
+    LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clWhite,clBlack);
     {LineaComando.StartRead(clSilver,clNavy,'/example/prompt/>',clYellow,clNavy);
  LineaComando.TextColors(clWhite,clNavy);
  LineaComando.Writeln(#27#218#27#10#191);
@@ -92,7 +92,7 @@ end;
 procedure TForm1.Button4Click(Sender: TObject);
 begin
     LineaComando.Writeln('Hola');
-    LineaComando.StartRead(clSilver,clBlack,'/MiniLab/>',clYellow,clNavy);
+    LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
 
 procedure TForm1.chartButtonClick(Sender: TObject);
@@ -105,7 +105,68 @@ begin
     if Input='hola' then
     begin
         LineaComando.Writeln('Hola');
+    end
+    else if Input='biseccion' then
+    begin
+        LineaComando.Writeln('biseccion');
+    end
+    else if Input='falsaposicion' then
+    begin
+        LineaComando.Writeln('falsaposicion');
+    end
+    else if Input='secante' then
+    begin
+        LineaComando.Writeln('secante');
+    end
+    else if Input='puntofijo' then
+    begin
+        LineaComando.Writeln('puntofijo');
+    end
+    else if Input='newton' then
+    begin
+        LineaComando.Writeln('newton');
+    end
+    else if Input='lagrange' then
+    begin
+        LineaComando.Writeln('lagrange');
+    end
+    else if Input='trapecio' then
+    begin
+        LineaComando.Writeln('trapecio');
+    end
+    else if Input='simpson1/3' then
+    begin
+        LineaComando.Writeln('simpson1/3');
+    end
+    else if Input='simpson3/8' then
+    begin
+        LineaComando.Writeln('simpson3/8');
+    end
+    else if Input='euler' then
+    begin
+        LineaComando.Writeln('euler');
+    end
+    else if Input='heun' then
+    begin
+        LineaComando.Writeln('heun');
+    end
+    else if Input='rungekutta' then
+    begin
+        LineaComando.Writeln('rungekutta');
+    end
+    else if Input='dormandprince' then
+    begin
+        LineaComando.Writeln('dormandprince');
+    end
+    else if Input='newtongeneralizado' then
+    begin
+        LineaComando.Writeln('newtongeneralizado');
+    end
+    else
+    begin
+        LineaComando.Writeln('Error');
     end;
+    LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
 
 end.
