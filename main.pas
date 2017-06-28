@@ -6,9 +6,11 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TAFuncSeries, Forms, Controls,
-  Graphics, Dialogs, ExtCtrls, StdCtrls, SpkToolbar, uCmdBox,
-  Functions, Matrix, Bisection, FalsePosition, Secant, FixedPoint, Newton, Lagrange, RiemannSum, Simpson,
-  Euler, Heun, RungeKutta, DormandPrince;
+  Graphics, Dialogs, ExtCtrls, StdCtrls, Grids, SpkToolbar, spkt_Tab, spkt_Pane,
+  spkt_Buttons, uCmdBox, GridHandler,ChartHandler,
+  Functions, Matrix, Bisection, FalsePosition, Secant,
+  FixedPoint, Newton, Lagrange, RiemannSum, Simpson, Euler, Heun, RungeKutta,
+  DormandPrince;
 
 type
 
@@ -43,7 +45,6 @@ type
     SpkTab1: TSpkTab;
     SpkToolbar1: TSpkToolbar;
     procedure Button4Click(Sender: TObject);
-    procedure chartButtonClick(Sender: TObject);
     procedure LineaComandoClick(Sender: TObject);
     procedure LineaComandoInput(ACmdBox: TCmdBox; Input: string);
     procedure FormCreate(Sender: TObject);
@@ -95,11 +96,6 @@ procedure TForm1.FormDestroy(Sender: TObject);
 begin
 end;
 
-procedure TForm1.tableButtonClick(Sender: TObject);
-  begin
-    chrGrafica.Visible := false;
-  end;
-
 procedure TForm1.LineaComandoClick(Sender: TObject);
 begin
 
@@ -110,11 +106,6 @@ begin
     LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
-
-procedure TForm1.chartButtonClick(Sender: TObject);
-  begin
-    chrGrafica.Visible := True;
-  end;
 
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
 var entrada: TStringList;

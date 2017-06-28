@@ -1,16 +1,16 @@
 object Form1: TForm1
-  Left = 476
-  Height = 850
-  Top = 69
-  Width = 1274
+  Left = 0
+  Height = 1053
+  Top = 27
+  Width = 1920
   Caption = 'Form1'
-  ClientHeight = 850
-  ClientWidth = 1274
+  ClientHeight = 1053
+  ClientWidth = 1920
   LCLVersion = '1.6.4.0'
   object SpkToolbar1: TSpkToolbar
     Left = 0
     Top = 0
-    Width = 1274
+    Width = 1920
     Appearance.Tab.TabHeaderFont.Color = 9126421
     Appearance.Tab.BorderColor = 14922381
     Appearance.Tab.GradientFromColor = 16115934
@@ -107,14 +107,12 @@ object Form1: TForm1
           Visible = True
           Enabled = True
           Caption = 'Show Chart'
-          OnClick = chartButtonClick
           ButtonKind = bkButton
         end
         object tableButton: TSpkLargeButton
           Visible = True
           Enabled = True
           Caption = 'Show Table'
-          OnClick = tableButtonClick
           ButtonKind = bkButton
         end
       end
@@ -123,8 +121,8 @@ object Form1: TForm1
   object LineaComando: TCmdBox
     Left = 0
     Height = 230
-    Top = 620
-    Width = 1274
+    Top = 823
+    Width = 1920
     Align = alBottom
     CaretColor = clWhite
     CaretType = cartUser
@@ -149,9 +147,9 @@ object Form1: TForm1
   end
   object chrGrafica: TChart
     Left = 0
-    Height = 508
+    Height = 711
     Top = 112
-    Width = 960
+    Width = 1606
     AxisList = <    
       item
         Grid.Color = clSilver
@@ -236,26 +234,26 @@ object Form1: TForm1
     end
   end
   object RightPanel: TPanel
-    Left = 960
-    Height = 508
+    Left = 1606
+    Height = 711
     Top = 112
     Width = 314
     Align = alRight
-    ClientHeight = 508
+    ClientHeight = 711
     ClientWidth = 314
     TabOrder = 3
     object Label1: TLabel
       Left = 16
-      Height = 15
+      Height = 20
       Top = 8
-      Width = 44
+      Width = 46
       Caption = 'History'
       ParentColor = False
     end
     object Button1: TButton
       Left = 16
       Height = 25
-      Top = 468
+      Top = 671
       Width = 282
       Anchors = [akLeft, akRight, akBottom]
       BorderSpacing.InnerBorder = 4
@@ -264,17 +262,19 @@ object Form1: TForm1
     end
     object HistoryList: TListBox
       Left = 16
-      Height = 123
+      Height = 326
       Top = 24
       Width = 282
       Anchors = [akTop, akLeft, akRight, akBottom]
       ItemHeight = 0
+      ScrollWidth = 280
       TabOrder = 1
+      TopIndex = -1
     end
     object Button2: TButton
       Left = 16
       Height = 25
-      Top = 283
+      Top = 486
       Width = 282
       Anchors = [akLeft, akRight, akBottom]
       BorderSpacing.InnerBorder = 4
@@ -283,11 +283,11 @@ object Form1: TForm1
     end
     object CbSetCaret: TComboBox
       Left = 16
-      Height = 29
-      Top = 427
+      Height = 32
+      Top = 627
       Width = 282
       Anchors = [akLeft, akRight, akBottom]
-      ItemHeight = 21
+      ItemHeight = 0
       ItemIndex = 0
       Items.Strings = (
         'Caret-Line'
@@ -301,7 +301,7 @@ object Form1: TForm1
     object Button3: TButton
       Left = 16
       Height = 25
-      Top = 315
+      Top = 518
       Width = 282
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Process'
@@ -309,9 +309,9 @@ object Form1: TForm1
     end
     object cbWordWrap: TCheckBox
       Left = 18
-      Height = 20
-      Top = 352
-      Width = 90
+      Height = 24
+      Top = 551
+      Width = 95
       Anchors = [akLeft, akBottom]
       Caption = 'WordWrap'
       Checked = True
@@ -321,7 +321,7 @@ object Form1: TForm1
     object Button4: TButton
       Left = 16
       Height = 35
-      Top = 386
+      Top = 589
       Width = 280
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Iniciar Consola'
