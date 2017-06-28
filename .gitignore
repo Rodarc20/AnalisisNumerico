@@ -1,0 +1,8 @@
+*.o
+*.out
+main
+minilab
+*.res
+methods/
+backup/
+lib/
