@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="minilab.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="20"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
       </Unit0>
       <Unit1>
         <Filename Value="main.pas"/>
@@ -18,10 +18,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="53"/>
-        <CursorPos X="6" Y="64"/>
+        <CursorPos X="5" Y="22"/>
         <ComponentState Value="2"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -31,30 +30,37 @@
         <UnitName Value="Euler"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="24" Y="13"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
       </Unit2>
       <Unit3>
         <Filename Value=".gitignore.txt"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="6" Y="5"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit3>
       <Unit4>
+        <Filename Value="methods.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="14"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
         <Filename Value="unit1.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="16"/>
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit4>
-      <Unit5>
+      </Unit5>
+      <Unit6>
         <Filename Value="minilab.lpi"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="69"/>
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="XML"/>
-      </Unit5>
+      </Unit6>
     </Units>
     <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
