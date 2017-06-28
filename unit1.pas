@@ -55,9 +55,9 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 DoubleBuffered := True;
-    LineaComando.Writeln('Hola SuperConejo');
+    LineaComando.Writeln('Hola ');
     LineaComando.TextColors(clWhite,clBlue); 
-    LineaComando.Writeln('Hola SuperConejo');
+    LineaComando.Writeln('Hola');
     ShowMessage('Construido');
     LineaComando.StartRead(clSilver,clBlack,'/MiniLab/>',clWhite,clBlack);
     {LineaComando.StartRead(clSilver,clNavy,'/example/prompt/>',clYellow,clNavy);
@@ -78,7 +78,7 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-    LineaComando.Writeln('Hola SuperConejo');
+    LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'/MiniLab/>',clYellow,clNavy);
 end;
 
@@ -86,7 +86,7 @@ procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
 begin
     if Input='hola' then
     begin
-        LineaComando.Writeln('Hola SuperConejo');
+        LineaComando.Writeln('Hola');
     end;
 end;
 
