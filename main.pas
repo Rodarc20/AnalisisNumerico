@@ -6,12 +6,14 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TAFuncSeries, Forms, Controls,
-  Graphics, Dialogs, ExtCtrls, StdCtrls, SpkToolbar, uCmdBox;
+  Graphics, Dialogs, ExtCtrls, StdCtrls, SpkToolbar, uCmdBox,
+  Functions, Bisection, FalsePosition, Secant, FixedPoint, Newton, Lagrange, RiemannSum;
 
 type
 
   { TForm1 }
 
+  TMatriz = Array of Array of Real;
   TForm1 = class(TForm)
     Area: TAreaSeries;
     AreaColorA: TAreaSeries;
@@ -38,8 +40,16 @@ type
     procedure LineaComandoInput(ACmdBox: TCmdBox; Input: string);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure MostrarAyuda(comando: string);
 
   private
+      biseccion: TBisection;
+      falsaposicion: TFalsePosition;
+      secante: TSecant;
+      puntofijo: TFixedPoint;
+      newton: TNewton;
+      lagrange: TLagrange;
+      trapecio: TRiemannSum;
     { private declarations }
       {public}
     { public declarations }
@@ -55,7 +65,7 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 DoubleBuffered := True;
-    LineaComando.Writeln('Hola ');
+    LineaComando.Writeln('Hola');
     LineaComando.TextColors(clWhite,clBlue); 
     LineaComando.Writeln('Hola');
     ShowMessage('Construido');
@@ -84,7 +94,9 @@ end;
 
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
 var entrada: TStringList;
+var puntos: TMatriz;
 var i: integer;
+var res: real;
 begin
     entrada:=TStringList.Create;
     entrada.Delimiter := ' ';
@@ -107,31 +119,65 @@ begin
     end
     else if entrada[0]='biseccion' then
     begin
+        {ecuacion, a, b, error}
+        biseccion:= TBisection.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]));
         LineaComando.Writeln('biseccion');
+        biseccion.Destroy;
     end
     else if entrada[0]='falsaposicion' then
     begin
+        {ecuacion, a, b, error}
+        falsaposicion:= TFalsePosition.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]));
         LineaComando.Writeln('falsaposicion');
+        falsaposicion.Destroy;
     end
     else if entrada[0]='secante' then
     begin
+        {ecuacion, x, error}
+        secante:= TSecant.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]));
         LineaComando.Writeln('secante');
+        secante.Destroy;
     end
     else if entrada[0]='puntofijo' then
     begin
+        {ecuacion, ecuacionderivada, x, error}
+        puntofijo := TFixedPoint.Create(entrada[1], entrada[2], StrToFloat(entrada[3]), StrToFloat(entrada[4]));
         LineaComando.Writeln('puntofijo');
+        puntofijo.Destroy;
     end
     else if entrada[0]='newton' then
     begin
+        {ecuacion, ecuacionderivada, x, error}
+        newton := TNewton.Create(entrada[1], entrada[2], StrToFloat(entrada[3]), StrToFloat(entrada[4]));
         LineaComando.Writeln('newton');
+        newton.Destroy;
     end
     else if entrada[0]='lagrange' then
     begin
+        {numeropuntos, x0, y0, x1, y1, ... ,xn, yn, xevaluar}
+        SetLength(puntos, 2, StrToInt(entrada[1]));
+        i:=0; 
+        while i < StrToInt(entrada[1])*2 do
+        begin
+            puntos[i mod 2, i div 2] := StrToFloat(entrada[2+i]);
+            i := i+1;
+        end;
+        lagrange := TLagrange.Create();
         LineaComando.Writeln('lagrange');
+        {evaluar la ultima entrada en el polinomio que devuelve execute}
+        lagrange.Destroy;
+    end
+    else if entrada[0]='newtongeneralido' then
+    begin
+        LineaComando.Writeln('newtongeneralizado');
     end
     else if entrada[0]='trapecio' then
     begin
-        LineaComando.Writeln('trapecio');
+        {ecuacion, a, b, n}
+        trapecio := TRiemannSum.Create();
+        res:= trapecio.execute(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
+        LineaComando.Writeln(FloatToStr(res));
+        trapecio.Destroy;
     end
     else if entrada[0]='simpson1/3' then
     begin
@@ -170,6 +216,10 @@ begin
         LineaComando.Writeln('Error');
     end;
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
+end;
+
+procedure TForm1.MostrarAyuda(comando: string);
+begin
 end;
 
 end.
