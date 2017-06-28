@@ -7,13 +7,15 @@ interface
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TAFuncSeries, Forms, Controls,
   Graphics, Dialogs, ExtCtrls, StdCtrls, SpkToolbar, uCmdBox,
-  Functions, Bisection, FalsePosition, Secant, FixedPoint, Newton, Lagrange, RiemannSum;
+  Functions, Matrix, Bisection, FalsePosition, Secant, FixedPoint, Newton, Lagrange, RiemannSum, Simpson,
+  Euler, Heun, RungeKutta, DormandPrince;
 
 type
 
   { TForm1 }
 
   TMatriz = Array of Array of Real;
+  TArray = Array of Real;
   TForm1 = class(TForm)
     Area: TAreaSeries;
     AreaColorA: TAreaSeries;
@@ -43,6 +45,7 @@ type
     procedure MostrarAyuda(comando: string);
 
   private
+      f: TFunctions;
       biseccion: TBisection;
       falsaposicion: TFalsePosition;
       secante: TSecant;
@@ -50,6 +53,11 @@ type
       newton: TNewton;
       lagrange: TLagrange;
       trapecio: TRiemannSum;
+      simpson: TSimpson;
+      euler: TEuler;
+      heun: THeun;
+      rungekutta: TRungeKutta;
+      dormandprince: TDormandPrince
     { private declarations }
       {public}
     { public declarations }
@@ -95,6 +103,8 @@ end;
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
 var entrada: TStringList;
 var puntos: TMatriz;
+var resul: TNumericMatrix;
+var resultado: TArray;
 var i: integer;
 var res: real;
 begin
@@ -167,7 +177,7 @@ begin
         {evaluar la ultima entrada en el polinomio que devuelve execute}
         lagrange.Destroy;
     end
-    else if entrada[0]='newtongeneralido' then
+    else if entrada[0]='newtongeneralizado' then
     begin
         LineaComando.Writeln('newtongeneralizado');
     end
@@ -181,31 +191,57 @@ begin
     end
     else if entrada[0]='simpson1/3' then
     begin
-        LineaComando.Writeln('simpson1/3');
+        {ecuacion, a, b, n}
+        LineaComando.Writeln('simpson3/8');
+        simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
+        res:= simpson.simpson13();
+        LineaComando.Writeln(FloatToStr(res));
+        simpson.Destroy;
     end
     else if entrada[0]='simpson3/8' then
     begin
+        {ecuacion, a, b, n}
+        simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
+        resultado:= simpson.simpson38();
+        {LineaComando.Writeln(FloatToStr(res));}
+        simpson.Destroy;
         LineaComando.Writeln('simpson3/8');
     end
     else if entrada[0]='euler' then
     begin
+        {ecuacion, objetivo, x, y, il}
+        euler := TEuler.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]), StrToFloat(entrada[5]));
+        resul:= euler.execute();
+        {LineaComando.Writeln(FloatToStr(res));}
+        euler.Destroy;
         LineaComando.Writeln('euler');
     end
     else if entrada[0]='heun' then
     begin
+        {ecuacion, objetivo, x, y, il}
+        heun := THeun.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]), StrToFloat(entrada[5]));
+        resul:= heun.execute();
+        {LineaComando.Writeln(FloatToStr(res));}
+        heun.Destroy;
         LineaComando.Writeln('heun');
     end
     else if entrada[0]='rungekutta' then
     begin
+        {ecuacion, objetivo, x, y, il}
+        rungekutta := TRungeKutta.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]), StrToFloat(entrada[5]));
+        resul:= rungekutta.execute4();
+        {LineaComando.Writeln(FloatToStr(res));}
+        rungekutta.Destroy;
         LineaComando.Writeln('rungekutta');
     end
     else if entrada[0]='dormandprince' then
     begin
+        {ecuacion, objetivo, x, y, il}
+        dormandprince := TDormandPrince.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]), StrToFloat(entrada[5]));
+        resul:= dormandprince.execute();
+        {LineaComando.Writeln(FloatToStr(res));}
+        dormandprince.Destroy;
         LineaComando.Writeln('dormandprince');
-    end
-    else if entrada[0]='newtongeneralizado' then
-    begin
-        LineaComando.Writeln('newtongeneralizado');
     end
     else if entrada[0]='clear' then
     begin
