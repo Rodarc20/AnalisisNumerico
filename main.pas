@@ -131,6 +131,7 @@ begin
     begin
         {ecuacion, a, b, error}
         biseccion:= TBisection.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]));
+        resul:= biseccion.execute;
         LineaComando.Writeln('biseccion');
         biseccion.Destroy;
     end
@@ -138,6 +139,7 @@ begin
     begin
         {ecuacion, a, b, error}
         falsaposicion:= TFalsePosition.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]));
+        resul:= falsaposicion.execute;
         LineaComando.Writeln('falsaposicion');
         falsaposicion.Destroy;
     end
@@ -145,6 +147,7 @@ begin
     begin
         {ecuacion, x, error}
         secante:= TSecant.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]));
+        resul:= secante.execute;
         LineaComando.Writeln('secante');
         secante.Destroy;
     end
@@ -152,6 +155,7 @@ begin
     begin
         {ecuacion, ecuacionderivada, x, error}
         puntofijo := TFixedPoint.Create(entrada[1], entrada[2], StrToFloat(entrada[3]), StrToFloat(entrada[4]));
+        resul:= puntofijo.execute;
         LineaComando.Writeln('puntofijo');
         puntofijo.Destroy;
     end
@@ -159,6 +163,7 @@ begin
     begin
         {ecuacion, ecuacionderivada, x, error}
         newton := TNewton.Create(entrada[1], entrada[2], StrToFloat(entrada[3]), StrToFloat(entrada[4]));
+        resul:= newton.execute;
         LineaComando.Writeln('newton');
         newton.Destroy;
     end
@@ -173,7 +178,8 @@ begin
             i := i+1;
         end;
         lagrange := TLagrange.Create();
-        LineaComando.Writeln('lagrange');
+        lagrange.IngresarValores(puntos);
+        LineaComando.Writeln(FloatToStr(f.evaluate(lagrange.Ejecutar, StrToFloat(entrada[entrada.Count-1]))));
         {evaluar la ultima entrada en el polinomio que devuelve execute}
         lagrange.Destroy;
     end
