@@ -17,6 +17,7 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <TopLine Value="151"/>
         <CursorPos X="53" Y="170"/>
         <ComponentState Value="2"/>
@@ -64,7 +65,6 @@
       <Unit7>
         <Filename Value="gridhandler.pas"/>
         <UnitName Value="GridHandler"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="58"/>
         <CursorPos Y="93"/>

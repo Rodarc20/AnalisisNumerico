@@ -88,13 +88,6 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 DoubleBuffered := True;
-    LineaComando.Writeln('Hola');
-    LineaComando.TextColors(clWhite,clBlue); 
-    LineaComando.Writeln('Hola');
-    ShowMessage('Construido');
-    LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clWhite,clBlack);
-    gridhandler:= TGridHandler.Create(resultTable);
-    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     {LineaComando.StartRead(clSilver,clNavy,'/example/prompt/>',clYellow,clNavy);
  LineaComando.TextColors(clWhite,clNavy);
  LineaComando.Writeln(#27#218#27#10#191);
@@ -113,6 +106,8 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
+    gridhandler:= TGridHandler.Create(resultTable);
+    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
@@ -209,6 +204,8 @@ begin
 
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'false-position');
     end
     else if entrada[0]='secante' then
     begin
@@ -230,6 +227,8 @@ begin
 
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'secant');
     end
     else if entrada[0]='puntofijo' then
     begin
@@ -251,6 +250,8 @@ begin
 
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'fixed-point');
     end
     else if entrada[0]='newton' then
     begin
@@ -272,6 +273,8 @@ begin
 
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'newton');
     end
     else if entrada[0]='lagrange' then
     begin
@@ -327,15 +330,32 @@ begin
           Active:= True;
         end;
         trapecio.Destroy;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'riemann');
     end
     else if entrada[0]='simpson1/3' then
     begin
         {ecuacion, a, b, n}
-        LineaComando.Writeln('simpson1/8');
+        LineaComando.Writeln('simpson1/3');
         simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         res:= simpson.simpson13();
         LineaComando.Writeln(FloatToStr(res));
         simpson.Destroy;
+        funcionintegrarString:=entrada[1];
+        with FuncionIntegrar do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          FuncionIntegrar.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
+        {gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'simpson13');}
     end
     else if entrada[0]='simpson3/8' then
     begin
@@ -345,6 +365,21 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         simpson.Destroy;
         LineaComando.Writeln('simpson3/8');
+        funcionintegrarString:=entrada[1];
+        with FuncionIntegrar do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          FuncionIntegrar.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
+        {gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'simpson38');}
     end
     else if entrada[0]='euler' then
     begin
@@ -354,6 +389,8 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         euler.Destroy;
         LineaComando.Writeln('euler');
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'euler');
     end
     else if entrada[0]='heun' then
     begin
@@ -363,6 +400,8 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         heun.Destroy;
         LineaComando.Writeln('heun');
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'heun');
     end
     else if entrada[0]='rungekutta' then
     begin
@@ -372,6 +411,8 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         rungekutta.Destroy;
         LineaComando.Writeln('rungekutta');
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'runge-kutta');
     end
     else if entrada[0]='dormandprince' then
     begin
@@ -381,6 +422,8 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         dormandprince.Destroy;
         LineaComando.Writeln('dormandprince');
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'dormand-prince');
     end
     else if entrada[0]='clear' then
     begin
