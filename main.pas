@@ -354,17 +354,19 @@ begin
 
           Active:= True;
         end;
-        {gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'simpson13');}
+        resul:= TNumericMatrix.Create;
+        SetLength(resul, 1, 1);
+        resul[0][0]:=res;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'simpson13');
     end
     else if entrada[0]='simpson3/8' then
     begin
         {ecuacion, a, b, n}
         simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         resultado:= simpson.simpson38();
-        {LineaComando.Writeln(FloatToStr(res));}
+        LineaComando.Writeln(FloatToStr(resultado[0]));
         simpson.Destroy;
-        LineaComando.Writeln('simpson3/8');
         funcionintegrarString:=entrada[1];
         with FuncionIntegrar do begin
           Active:= False;
@@ -378,8 +380,11 @@ begin
 
           Active:= True;
         end;
-        {gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'simpson38');}
+        SetLength(resul, 1, 2);
+        resul[0][0]:=resultado[0];
+        resul[0][1]:=resultado[1];
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'simpson38');
     end
     else if entrada[0]='euler' then
     begin
@@ -389,6 +394,7 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         euler.Destroy;
         LineaComando.Writeln('euler');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][2]));
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'euler');
     end
@@ -400,6 +406,7 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         heun.Destroy;
         LineaComando.Writeln('heun');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][2]));
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'heun');
     end
@@ -411,6 +418,7 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         rungekutta.Destroy;
         LineaComando.Writeln('rungekutta');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][2]));
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'runge-kutta');
     end
@@ -422,6 +430,7 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         dormandprince.Destroy;
         LineaComando.Writeln('dormandprince');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][2]));
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'dormand-prince');
     end
