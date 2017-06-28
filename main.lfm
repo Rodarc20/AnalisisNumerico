@@ -127,6 +127,7 @@ object Form1: TForm1
       Extent.UseXMin = True
       Extent.XMax = -5
       Extent.XMin = 5
+      OnCalculate = FuncionCalculate
       ExtentAutoY = True
     end
     object Area: TAreaSeries
@@ -143,6 +144,7 @@ object Form1: TForm1
     end
     object FuncionIntegrar: TFuncSeries
       Active = False
+      OnCalculate = FuncionIntegrarCalculate
       ExtentAutoY = True
     end
     object AreaColorA: TAreaSeries

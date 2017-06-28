@@ -38,6 +38,8 @@ type
     RightPanel: TPanel;
     SpkToolbar1: TSpkToolbar;
     procedure Button4Click(Sender: TObject);
+    procedure FuncionCalculate(const AX: Double; out AY: Double);
+    procedure FuncionIntegrarCalculate(const AX: Double; out AY: Double);
     procedure LineaComandoClick(Sender: TObject);
     procedure LineaComandoInput(ACmdBox: TCmdBox; Input: string);
     procedure FormCreate(Sender: TObject);
@@ -45,6 +47,8 @@ type
     procedure MostrarAyuda(comando: string);
 
   private
+      funcionString: string;
+      funcionintegrarString: string;
       f: TFunctions;
       biseccion: TBisection;
       falsaposicion: TFalsePosition;
@@ -98,6 +102,18 @@ procedure TForm1.Button4Click(Sender: TObject);
 begin
     LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
+end;
+
+procedure TForm1.FuncionCalculate(const AX: Double; out AY: Double);
+begin
+    AY:= f.evaluate(funcionString, AX);
+
+end;
+
+procedure TForm1.FuncionIntegrarCalculate(const AX: Double; out AY: Double);
+begin
+    AY:= f.evaluate(funcionintegrarString, AX);
+
 end;
 
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
@@ -190,15 +206,28 @@ begin
     else if entrada[0]='trapecio' then
     begin
         {ecuacion, a, b, n}
+        funcionintegrarString:=entrada[1];
         trapecio := TRiemannSum.Create();
         res:= trapecio.execute(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         LineaComando.Writeln(FloatToStr(res));
+        with FuncionIntegrar do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          FuncionIntegrar.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
         trapecio.Destroy;
     end
     else if entrada[0]='simpson1/3' then
     begin
         {ecuacion, a, b, n}
-        LineaComando.Writeln('simpson3/8');
+        LineaComando.Writeln('simpson1/8');
         simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         res:= simpson.simpson13();
         LineaComando.Writeln(FloatToStr(res));
