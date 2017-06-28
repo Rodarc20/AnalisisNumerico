@@ -113,6 +113,8 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
+    gridhandler:= TGridHandler.Create(resultTable);
+    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
@@ -387,6 +389,7 @@ begin
         resul[0][1]:=resultado[1];
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'simpson38');
+        charthandler.fillChart(resul, true);
     end
     else if entrada[0]='euler' then
     begin

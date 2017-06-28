@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="11">
+    <Units Count="9">
       <Unit0>
         <Filename Value="minilab.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -17,9 +17,9 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="289"/>
-        <CursorPos X="36" Y="304"/>
-        <FoldState Value=" T3jI023p"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="131"/>
+        <CursorPos X="53" Y="170"/>
         <ComponentState Value="2"/>
         <UsageCount Value="37"/>
         <Loaded Value="True"/>
@@ -52,22 +52,21 @@
         <Filename Value="unit1.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="16"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit5>
       <Unit6>
         <Filename Value="minilab.lpi"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="69"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit6>
       <Unit7>
         <Filename Value="gridhandler.pas"/>
         <UnitName Value="GridHandler"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="58"/>
-        <CursorPos X="26" Y="66"/>
+        <CursorPos Y="93"/>
         <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit7>
@@ -75,157 +74,133 @@
         <Filename Value="charthandler.pas"/>
         <UnitName Value="ChartHandler"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="36"/>
-        <CursorPos X="44" Y="52"/>
-        <UsageCount Value="12"/>
+        <TopLine Value="24"/>
+        <CursorPos X="46" Y="51"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit8>
-      <Unit9>
-        <Filename Value="/usr/share/lazarus/1.6.4/components/cmdline/ucmdbox.pas"/>
-        <UnitName Value="uCmdBox"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2447"/>
-        <CursorPos Y="2464"/>
-        <UsageCount Value="10"/>
-      </Unit9>
-      <Unit10>
-        <Filename Value="methods/main.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="20"/>
-        <CursorPos X="22" Y="22"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit10>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="main.pas"/>
-        <Caret Line="187" Column="95" TopLine="168"/>
+        <Caret Line="112" Column="75" TopLine="93"/>
       </Position1>
       <Position2>
         <Filename Value="main.pas"/>
-        <Caret Line="107" Column="3" TopLine="105"/>
+        <Caret Line="46" Column="22" TopLine="27"/>
       </Position2>
       <Position3>
         <Filename Value="main.pas"/>
-        <Caret Line="129" Column="24" TopLine="109"/>
+        <Caret Line="42" Column="15" TopLine="23"/>
       </Position3>
       <Position4>
         <Filename Value="main.pas"/>
-        <Caret Line="72" Column="7" TopLine="53"/>
+        <Caret Line="130" TopLine="111"/>
       </Position4>
       <Position5>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="75" Column="27" TopLine="55"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="10" Column="37"/>
       </Position5>
       <Position6>
         <Filename Value="main.pas"/>
-        <Caret Line="72" Column="7" TopLine="53"/>
+        <Caret Line="49" Column="15" TopLine="30"/>
       </Position6>
       <Position7>
         <Filename Value="main.pas"/>
-        <Caret Line="165" Column="22" TopLine="147"/>
+        <Caret Line="159" Column="48" TopLine="140"/>
       </Position7>
       <Position8>
         <Filename Value="main.pas"/>
-        <Caret Line="166" Column="22" TopLine="148"/>
+        <Caret Line="162" Column="9" TopLine="143"/>
       </Position8>
       <Position9>
         <Filename Value="main.pas"/>
-        <Caret Line="331" Column="3" TopLine="296"/>
+        <Caret Line="177" Column="108" TopLine="158"/>
       </Position9>
       <Position10>
         <Filename Value="main.pas"/>
-        <Caret Line="140" Column="32" TopLine="120"/>
+        <Caret Line="179" Column="20" TopLine="160"/>
       </Position10>
       <Position11>
         <Filename Value="main.pas"/>
-        <Caret Line="122" Column="5" TopLine="102"/>
+        <Caret Line="187" Column="120" TopLine="168"/>
       </Position11>
       <Position12>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="75" TopLine="55"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="207" Column="9" TopLine="188"/>
       </Position12>
       <Position13>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="70" Column="30" TopLine="31"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="56" Column="14" TopLine="38"/>
       </Position13>
       <Position14>
         <Filename Value="main.pas"/>
-        <Caret Line="170" Column="53" TopLine="151"/>
+        <Caret Line="208" Column="113" TopLine="189"/>
       </Position14>
       <Position15>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="84" Column="31" TopLine="66"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="238" Column="17" TopLine="200"/>
       </Position15>
       <Position16>
         <Filename Value="main.pas"/>
-        <Caret Line="187" TopLine="169"/>
+        <Caret Line="181" Column="87" TopLine="163"/>
       </Position16>
       <Position17>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="94" Column="9" TopLine="67"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="187" Column="95" TopLine="168"/>
       </Position17>
       <Position18>
         <Filename Value="main.pas"/>
-        <Caret Line="189" Column="30" TopLine="163"/>
+        <Caret Line="107" Column="3" TopLine="105"/>
       </Position18>
       <Position19>
         <Filename Value="main.pas"/>
-        <Caret Line="187" TopLine="163"/>
+        <Caret Line="129" Column="24" TopLine="109"/>
       </Position19>
       <Position20>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="93" TopLine="67"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="72" Column="7" TopLine="53"/>
       </Position20>
       <Position21>
         <Filename Value="gridhandler.pas"/>
-        <Caret Line="94" TopLine="67"/>
+        <Caret Line="75" Column="27" TopLine="55"/>
       </Position21>
       <Position22>
         <Filename Value="main.pas"/>
-        <Caret Line="188" TopLine="164"/>
+        <Caret Line="72" Column="7" TopLine="53"/>
       </Position22>
       <Position23>
         <Filename Value="main.pas"/>
-        <Caret Line="189" TopLine="165"/>
+        <Caret Line="165" Column="22" TopLine="147"/>
       </Position23>
       <Position24>
         <Filename Value="main.pas"/>
-        <Caret Line="394" TopLine="379"/>
+        <Caret Line="166" Column="22" TopLine="148"/>
       </Position24>
       <Position25>
         <Filename Value="main.pas"/>
-        <Caret Line="395" TopLine="379"/>
+        <Caret Line="331" Column="3" TopLine="296"/>
       </Position25>
       <Position26>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="86" Column="18" TopLine="66"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="140" Column="32" TopLine="120"/>
       </Position26>
       <Position27>
         <Filename Value="main.pas"/>
-        <Caret Line="187" TopLine="172"/>
+        <Caret Line="122" Column="5" TopLine="102"/>
       </Position27>
       <Position28>
-        <Filename Value="charthandler.pas"/>
-        <Caret Line="59" Column="72" TopLine="51"/>
+        <Filename Value="gridhandler.pas"/>
+        <Caret Line="75" TopLine="55"/>
       </Position28>
       <Position29>
-        <Filename Value="main.pas"/>
-        <Caret Line="315" Column="8" TopLine="299"/>
+        <Filename Value="gridhandler.pas"/>
+        <Caret Line="70" Column="30" TopLine="31"/>
       </Position29>
       <Position30>
         <Filename Value="main.pas"/>
-        <Caret Line="140" Column="30" TopLine="133"/>
+        <Caret Line="170" Column="53" TopLine="131"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
-  <Debugging>
-    <Watches Count="1">
-      <Item1>
-        <Expression Value="mGrid"/>
-      </Item1>
-    </Watches>
-  </Debugging>
 </CONFIG>
