@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="minilab.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -41,19 +41,26 @@
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit3>
       <Unit4>
+        <Filename Value="methods.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="14"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
         <Filename Value="unit1.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="16"/>
         <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit4>
-      <Unit5>
+      </Unit5>
+      <Unit6>
         <Filename Value="minilab.lpi"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="69"/>
         <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="XML"/>
-      </Unit5>
+      </Unit6>
     </Units>
     <JumpHistory Count="21" HistoryIndex="20">
       <Position1>

@@ -6,9 +6,11 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TAFuncSeries, Forms, Controls,
-  Graphics, Dialogs, ExtCtrls, StdCtrls, SpkToolbar, uCmdBox,
-  Functions, Matrix, Bisection, FalsePosition, Secant, FixedPoint, Newton, Lagrange, RiemannSum, Simpson,
-  Euler, Heun, RungeKutta, DormandPrince;
+  Graphics, Dialogs, ExtCtrls, StdCtrls, Grids, SpkToolbar, spkt_Tab, spkt_Pane,
+  spkt_Buttons, uCmdBox, GridHandler,ChartHandler,
+  Functions, Matrix, Bisection, FalsePosition, Secant,
+  FixedPoint, Newton, Lagrange, RiemannSum, Simpson, Euler, Heun, RungeKutta,
+  DormandPrince;
 
 type
 
@@ -36,6 +38,11 @@ type
     FuncionIntegrar: TFuncSeries;
     Plotear: TLineSeries;
     RightPanel: TPanel;
+    chartButton: TSpkLargeButton;
+    resultTable: TStringGrid;
+    tableButton: TSpkLargeButton;
+    SpkPane1: TSpkPane;
+    SpkTab1: TSpkTab;
     SpkToolbar1: TSpkToolbar;
     procedure Button4Click(Sender: TObject);
     procedure FuncionCalculate(const AX: Double; out AY: Double);
