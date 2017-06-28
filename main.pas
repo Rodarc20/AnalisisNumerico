@@ -45,6 +45,7 @@ type
     SpkTab1: TSpkTab;
     SpkToolbar1: TSpkToolbar;
     procedure Button4Click(Sender: TObject);
+    procedure chartButtonClick(Sender: TObject);
     procedure FuncionCalculate(const AX: Double; out AY: Double);
     procedure FuncionIntegrarCalculate(const AX: Double; out AY: Double);
     procedure LineaComandoClick(Sender: TObject);
@@ -52,6 +53,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure MostrarAyuda(comando: string);
+    procedure tableButtonClick(Sender: TObject);
 
   private
       funcionString: string;
@@ -68,7 +70,9 @@ type
       euler: TEuler;
       heun: THeun;
       rungekutta: TRungeKutta;
-      dormandprince: TDormandPrince
+      dormandprince: TDormandPrince;
+      gridhandler: TGridHandler;
+      charthandler: TChartHandler;
     { private declarations }
       {public}
     { public declarations }
@@ -89,6 +93,8 @@ DoubleBuffered := True;
     LineaComando.Writeln('Hola');
     ShowMessage('Construido');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clWhite,clBlack);
+    gridhandler:= TGridHandler.Create(resultTable);
+    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     {LineaComando.StartRead(clSilver,clNavy,'/example/prompt/>',clYellow,clNavy);
  LineaComando.TextColors(clWhite,clNavy);
  LineaComando.Writeln(#27#218#27#10#191);
@@ -111,6 +117,12 @@ begin
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
 
+procedure TForm1.chartButtonClick(Sender: TObject);
+begin
+    resultTable.visible := false ;
+    chrGrafica.visible := true;
+end;
+
 procedure TForm1.FuncionCalculate(const AX: Double; out AY: Double);
 begin
     AY:= f.evaluate(funcionString, AX);
@@ -130,6 +142,7 @@ var resul: TNumericMatrix;
 var resultado: TArray;
 var i: integer;
 var res: real;
+var polinomio: string;
 begin
     entrada:=TStringList.Create;
     entrada.Delimiter := ' ';
@@ -155,8 +168,25 @@ begin
         {ecuacion, a, b, error}
         biseccion:= TBisection.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]));
         resul:= biseccion.execute;
-        LineaComando.Writeln('biseccion');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][3]));
         biseccion.Destroy;
+
+        funcionString := entrada[1];
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'bisection');
+        {charthandler.fillchart(resul);}
     end
     else if entrada[0]='falsaposicion' then
     begin
@@ -165,6 +195,20 @@ begin
         resul:= falsaposicion.execute;
         LineaComando.Writeln('falsaposicion');
         falsaposicion.Destroy;
+
+        funcionString := entrada[1];
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
     end
     else if entrada[0]='secante' then
     begin
@@ -173,6 +217,19 @@ begin
         resul:= secante.execute;
         LineaComando.Writeln('secante');
         secante.Destroy;
+        funcionString := entrada[1];
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
     end
     else if entrada[0]='puntofijo' then
     begin
@@ -181,6 +238,19 @@ begin
         resul:= puntofijo.execute;
         LineaComando.Writeln('puntofijo');
         puntofijo.Destroy;
+        funcionString := entrada[1];
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
     end
     else if entrada[0]='newton' then
     begin
@@ -189,6 +259,19 @@ begin
         resul:= newton.execute;
         LineaComando.Writeln('newton');
         newton.Destroy;
+        funcionString := entrada[1];
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
     end
     else if entrada[0]='lagrange' then
     begin
@@ -202,9 +285,23 @@ begin
         end;
         lagrange := TLagrange.Create();
         lagrange.IngresarValores(puntos);
-        LineaComando.Writeln(FloatToStr(f.evaluate(lagrange.Ejecutar, StrToFloat(entrada[entrada.Count-1]))));
+        polinomio:=lagrange.Ejecutar;
+        LineaComando.Writeln(FloatToStr(f.evaluate(polinomio, StrToFloat(entrada[entrada.Count-1]))));
         {evaluar la ultima entrada en el polinomio que devuelve execute}
         lagrange.Destroy;
+        funcionString := polinomio;
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
     end
     else if entrada[0]='newtongeneralizado' then
     begin
@@ -298,6 +395,13 @@ end;
 
 procedure TForm1.MostrarAyuda(comando: string);
 begin
+end;
+
+procedure TForm1.tableButtonClick(Sender: TObject);
+begin
+    resultTable.visible:= true;
+    chrGrafica.visible:= false;
+
 end;
 
 end.

@@ -58,6 +58,8 @@ implementation
           result.AddStrings(['n', 'Xn', 'Yn', 'k1', 'k2', 'k3', 'k4', 'm']);
         'dormand-prince':
           result.AddStrings(['n', 'Xn', 'Yn', 'k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'h']);
+        'gen-newton':
+          result.AddStrings(['n', 'Xn', 'Yn', 'Xn+1', 'Yn+1', 'Error']);
       end;
     end;
 
