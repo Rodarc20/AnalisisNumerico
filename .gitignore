@@ -1,2 +1,9 @@
 *.o
 *.ppu
+*.out
+main
+minilab
+*.res
+methods/
+backup/
+lib/

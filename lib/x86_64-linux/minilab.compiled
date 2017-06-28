@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1487245152"/>
-  <Params Value=" -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/rodrigo/LazarusProjects/MiniLab/lib/x86_64-linux -Fu/usr/lib/lazarus/components/tachart/lib/x86_64-linux/qt -Fu/home/rodrigo/LazarusProjects/componentes/spktoolbar/lib/x86_64-linux -Fu/usr/lib/lazarus/components/ideintf/units/x86_64-linux/qt -Fu/usr/lib/lazarus/components/lazcontrols/lib/x86_64-linux/qt -Fu/home/rodrigo/LazarusProjects/componentes/cmdline/lib/x86_64-linux -Fu/usr/lib/lazarus/lcl/units/x86_64-linux/qt -Fu/usr/lib/lazarus/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/packager/units/x86_64-linux -Fu/home/rodrigo/LazarusProjects/MiniLab/ -FU/home/rodrigo/LazarusProjects/MiniLab/lib/x86_64-linux/ -dLCL -dLCLqt minilab.lpr"/>
-</CONFIG>
