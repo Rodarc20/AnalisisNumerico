@@ -89,12 +89,6 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 DoubleBuffered := True;
-    LineaComando.Writeln('Hola');
-    LineaComando.TextColors(clWhite,clBlue); 
-    LineaComando.Writeln('Hola');
-    ShowMessage('Construido');
-    LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clWhite,clBlack);
-    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
     {LineaComando.StartRead(clSilver,clNavy,'/example/prompt/>',clYellow,clNavy);
  LineaComando.TextColors(clWhite,clNavy);
  LineaComando.Writeln(#27#218#27#10#191);
@@ -188,7 +182,6 @@ begin
 
           Active:= True;
         end;
-        gridhandler:= TGridHandler.Create(resultTable);
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'bisection');
         gridhandler.destroy();
@@ -212,9 +205,10 @@ begin
           Extent.UseXMax:= true;
           Extent.UseXMin:= true;
           Funcion.Pen.Color:=  clBlue;
-
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'false-position');
     end
     else if entrada[0]='secante' then
     begin
@@ -236,6 +230,8 @@ begin
 
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'secant');
     end
     else if entrada[0]='puntofijo' then
     begin
@@ -267,6 +263,8 @@ begin
 
           Active:= True;
         end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'newton');
     end
     else if entrada[0]='lagrange' then
     begin
@@ -310,10 +308,10 @@ begin
         generalizednewton := TGeneralizedNewton.Create(equations, values, StrToFloat(entrada[5]));
         resul := generalizednewton.execute();
         generalizednewton.destroy;
-        gridhandler:= TGridHandler.Create(resultTable);
+        {gridhandler:= TGridHandler.Create(resultTable);}
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'gen-newton');
-        gridhandler.destroy();
+        {gridhandler.destroy();}
     end
     else if entrada[0]='trapecio' then
     begin
@@ -334,7 +332,12 @@ begin
 
           Active:= True;
         end;
+        resul:= TNumericMatrix.Create;
+        SetLength(resul, 1, 1);
+        resul[0][0]:=res;
         trapecio.Destroy;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'riemann');
     end
     else if entrada[0]='simpson1/3' then
     begin
