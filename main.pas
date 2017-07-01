@@ -549,6 +549,8 @@ begin
         res:= simpson.simpson13();
         simpson.Destroy;
         LineaComando.Writeln(FloatToStr(res));
+        gridhandler.cleanGrid();
+        charthandler.fillChart2(CrearPuntosParaGraficar('power(exp(1),x)*ln(x)', 1.0001, 2, 0.01), CrearPuntosParaGraficar('ln(ln(x))', 1.0001, 2, 0.01), true);
         {charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));}
     end
     {modificar simposion para que noe s de el áres}
