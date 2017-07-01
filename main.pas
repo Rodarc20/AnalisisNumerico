@@ -506,8 +506,8 @@ begin
         with FuncionIntegrar do begin
           Active:= False;
 
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
+          Extent.XMax:= 5;
+          Extent.XMin:= -5;
 
           Extent.UseXMax:= true;
           Extent.UseXMin:= true;
@@ -524,8 +524,8 @@ begin
         with FuncionIntegrar do begin
           Active:= False;
 
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
+          Extent.XMax:= 5;
+          Extent.XMin:= -5;
 
           Extent.UseXMax:= true;
           Extent.UseXMin:= true;
@@ -541,7 +541,8 @@ begin
         simpson := TSimpson.Create('power(exp(1),x)*ln(x)-ln(ln(x))', 1.0001, 2, 1800);
         res:= simpson.simpson13();
         simpson.Destroy;
-        LineaComando.Writeln(FloatToStr(res));
+        LineaComando.Writeln(Format('%.8f', [res]));
+        {LineaComando.Writeln(FloatToStr(res));}
         gridhandler.cleanGrid();
         charthandler.fillChart2(CrearPuntosParaGraficar('power(exp(1),x)*ln(x)', 1.0001, 2, 0.01), CrearPuntosParaGraficar('ln(ln(x))', 1.0001, 2, 0.01), true);
     end
