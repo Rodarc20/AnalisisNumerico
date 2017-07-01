@@ -128,7 +128,6 @@ end;
 
 procedure TForm1.FuncionIntegrarCalculate(const AX: Double; out AY: Double);
 begin
-    ShowMessage(FloatToStr(AX));
     AY:= f.evaluate(funcionintegrarString, AX);
 
 end;
@@ -502,6 +501,73 @@ begin
         charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'ejercicio1');
+    end
+    else if entrada[0]='ejercicio2a' then
+    begin
+        LineaComando.Writeln('comportamiento de 1/power(2*pi,0.5)*power(exp(1),-power(x,2)/2)');
+        funcionintegrarString:='1/power(2*pi,0.5)*power(exp(1),-power(x,2)/2)';
+        with FuncionIntegrar do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          FuncionIntegrar.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
+        {charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));}
+    end
+    else if entrada[0]='ejercicio2b' then
+    begin
+        LineaComando.Writeln('comportamiento de -x/power(2*pi,0.5)*power(exp(1),-power(x,2)/2)');
+        funcionintegrarString:='-x/power(2*pi,0.5)*power(exp(1),-power(x,2)/2)';
+        with FuncionIntegrar do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          FuncionIntegrar.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
+        {charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));}
+    end
+    else if entrada[0]='ejercicio3' then
+    begin
+        LineaComando.Writeln('ln(ln(x)) no existe en x = 1 por lo tanto se esta tomando <1;2]');
+        {funcionString := 'power(exp(1),x)*ln(x)';
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 1.001;
+          Extent.XMin:= 2;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clGreen;
+
+          Active:= True;
+        end;
+        funcionintegrarString:='ln(ln(x))';
+        with FuncionIntegrar do begin
+          Active:= False;
+
+          Extent.XMax:= 1.001;
+          Extent.XMin:= 2;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          FuncionIntegrar.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;}
+        {charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));}
     end
     else
     begin
