@@ -142,10 +142,8 @@ var intervalos: double;
 var nintervalos: integer;
 begin
     {h:= abs( ( Max - Min )/( 100 * Max ) );}
-    h:= 1/n;{n es la prescision}
     intervalos:= abs(b-a)/n;
     nintervalos:= trunc(intervalos)+1;
-    ShowMessage(IntToStr(nintervalos));
     resul:= TNumericMatrix.Create;
     SetLength(resul, nintervalos, 3);
     {resul[0][0]:=res;}
@@ -156,10 +154,10 @@ begin
         resul[i][0]:=i;
         resul[i][1]:=x;
         resul[i][2]:=f.evaluate(func, x);
+        {ShowMessage(FloatToStr(resul[i][1])+','+FloatToStr(resul[i][2]));}
         x:= x + n;
         i:=i+1;
     end;
-    ShowMessage(IntToStr(i));
     {al finalizar i deberia tener el tamaño de niintervalos}
     Result:= resul;
 end;
@@ -368,7 +366,7 @@ begin
           Active:= True;
         end;}
 
-        charthandler.fillChart(CrearPuntosParaGraficar(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), 0.01));
+        charthandler.fillChart(CrearPuntosParaGraficar(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), 0.1));
 
         resul:= TNumericMatrix.Create;
         SetLength(resul, 1, 1);
@@ -380,24 +378,13 @@ begin
     else if entrada[0]='simpson1/3' then
     begin
         {ecuacion, a, b, n}
-        LineaComando.Writeln('simpson1/8');
+        LineaComando.Writeln('simpson1/3');
         simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         res:= simpson.simpson13();
         LineaComando.Writeln(FloatToStr(res));
         simpson.Destroy;
         funcionintegrarString:=entrada[1];
-        with FuncionIntegrar do begin
-          Active:= False;
-
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
-
-          Extent.UseXMax:= true;
-          Extent.UseXMin:= true;
-          FuncionIntegrar.Pen.Color:=  clBlue;
-
-          Active:= True;
-        end;
+        charthandler.fillChart(CrearPuntosParaGraficar(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), 0.01));
         resul:= TNumericMatrix.Create;
         SetLength(resul, 1, 1);
         resul[0][0]:=res;
