@@ -54,6 +54,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure MostrarAyuda(comando: string);
     procedure tableButtonClick(Sender: TObject);
+    function CrearPuntosParaGraficar(func: string; a: double; b: double; n: double): TNumericMatrix;
 
   private
       funcionString: string;
@@ -127,8 +128,40 @@ end;
 
 procedure TForm1.FuncionIntegrarCalculate(const AX: Double; out AY: Double);
 begin
+    ShowMessage(FloatToStr(AX));
     AY:= f.evaluate(funcionintegrarString, AX);
 
+end;
+
+function TForm1.CrearPuntosParaGraficar(func: string; a: double; b: double; n: double): TNumericMatrix;
+var resul: TNumericMatrix;
+var h: double;
+var x: double;
+var i: integer;
+var intervalos: double;
+var nintervalos: integer;
+begin
+    {h:= abs( ( Max - Min )/( 100 * Max ) );}
+    h:= 1/n;{n es la prescision}
+    intervalos:= abs(b-a)/n;
+    nintervalos:= trunc(intervalos)+1;
+    ShowMessage(IntToStr(nintervalos));
+    resul:= TNumericMatrix.Create;
+    SetLength(resul, nintervalos, 3);
+    {resul[0][0]:=res;}
+    i:= 0;
+    x:= a;
+    while (x <= b) do
+    begin
+        resul[i][0]:=i;
+        resul[i][1]:=x;
+        resul[i][2]:=f.evaluate(func, x);
+        x:= x + n;
+        i:=i+1;
+    end;
+    ShowMessage(IntToStr(i));
+    {al finalizar i deberia tener el tamaño de niintervalos}
+    Result:= resul;
 end;
 
 procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
@@ -151,6 +184,8 @@ begin
         LineaComando.Writeln(entrada[i]);
         i := i+1;
     end;}
+    Funcion.Active:=false;
+    FuncionIntegrar.Active:=false;
     if entrada[0]='hola' then
     begin
         LineaComando.Writeln('Hola');
@@ -320,18 +355,21 @@ begin
         trapecio := TRiemannSum.Create();
         res:= trapecio.execute(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));
         LineaComando.Writeln(FloatToStr(res));
-        with FuncionIntegrar do begin
+        {with FuncionIntegrar do begin
           Active:= False;
 
-          Extent.XMax:= 10;
-          Extent.XMin:= -10;
+          Extent.XMax:= StrToFloat(entrada[3]);
+          Extent.XMin:= StrToFloat(entrada[2]);
 
           Extent.UseXMax:= true;
           Extent.UseXMin:= true;
           FuncionIntegrar.Pen.Color:=  clBlue;
 
           Active:= True;
-        end;
+        end;}
+
+        charthandler.fillChart(CrearPuntosParaGraficar(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), 0.01));
+
         resul:= TNumericMatrix.Create;
         SetLength(resul, 1, 1);
         resul[0][0]:=res;

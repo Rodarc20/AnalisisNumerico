@@ -38,6 +38,7 @@ implementation
       m: Integer;
       i: Integer;
     begin
+        mLineSeries.Active:=true;
       m := Length(answer);
       for i := 0 to m-1 do
         begin
