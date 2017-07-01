@@ -183,20 +183,10 @@ object Form1: TForm1
       'TAChart'
     )
     Align = alClient
-    object EjeX: TConstantLine
-      Arrow.BaseLength = 6
-      Arrow.Visible = True
-      Position = 0
-      Title = 'Eje X'
-    end
-    object EjeY: TConstantLine
-      Arrow.BaseLength = 6
-      Arrow.Visible = True
-      LineStyle = lsVertical
-      Position = 0
-    end
     object Plotear: TLineSeries
       Active = False
+    end
+    object Plotear2: TLineSeries
     end
     object Funcion: TFuncSeries
       Active = False
@@ -235,6 +225,18 @@ object Form1: TForm1
       Active = False
       AxisIndexY = 0
       UseZeroLevel = True
+    end
+    object EjeY: TConstantLine
+      Arrow.BaseLength = 6
+      Arrow.Visible = True
+      LineStyle = lsVertical
+      Position = 0
+    end
+    object EjeX: TConstantLine
+      Arrow.BaseLength = 6
+      Arrow.Visible = True
+      Position = 0
+      Title = 'Eje X'
     end
   end
   object RightPanel: TPanel

@@ -29,6 +29,7 @@ type
     CbSetCaret: TComboBox;
     cbWordWrap: TCheckBox;
     chrGrafica: TChart;
+    Plotear2: TLineSeries;
     HistoryList: TListBox;
     Label1: TLabel;
     LineaComando: TCmdBox;
@@ -109,7 +110,7 @@ end;
 procedure TForm1.Button4Click(Sender: TObject);
 begin
     gridhandler:= TGridHandler.Create(resultTable);
-    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear);
+    charthandler:= TChartHandler.Create(chrGrafica, Area, Plotear, Plotear2);
     LineaComando.Writeln('Hola');
     LineaComando.StartRead(clSilver,clBlack,'MiniLab/>',clYellow,clBlack);
 end;
@@ -542,33 +543,15 @@ begin
     begin
         LineaComando.Writeln('ln(ln(x)) no existe en x = 1 por lo tanto se esta tomando <1;2]');
         {funcionString := 'power(exp(1),x)*ln(x)';
-        with Funcion do begin
-          Active:= False;
-
-          Extent.XMax:= 1.001;
-          Extent.XMin:= 2;
-
-          Extent.UseXMax:= true;
-          Extent.UseXMin:= true;
-          Funcion.Pen.Color:=  clGreen;
-
-          Active:= True;
-        end;
         funcionintegrarString:='ln(ln(x))';
-        with FuncionIntegrar do begin
-          Active:= False;
-
-          Extent.XMax:= 1.001;
-          Extent.XMin:= 2;
-
-          Extent.UseXMax:= true;
-          Extent.UseXMin:= true;
-          FuncionIntegrar.Pen.Color:=  clBlue;
-
-          Active:= True;
-        end;}
+        }
+        simpson := TSimpson.Create('power(exp(1),x)*ln(x)-ln(ln(x))', 1.0001, 2, 1000);
+        res:= simpson.simpson13();
+        simpson.Destroy;
+        LineaComando.Writeln(FloatToStr(res));
         {charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));}
     end
+    {modificar simposion para que noe s de el áres}
     else
     begin
         LineaComando.Writeln('Error');
