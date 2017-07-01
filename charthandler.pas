@@ -58,11 +58,10 @@ implementation
         end;
       if (area = true) then
         begin
-          mLineSeries.SeriesColor := TColor($00FF00);
-          (*mLineSeries.LinePen.Width := 2;*)
-          mAreaSeries.AreaBrush.Color := TColor($F0CAA6);
-          mAreaSeries.AreaLinesPen.Style := psClear;
-          mAreaSeries.UseZeroLevel := true;
+          mAreaSeries.Clear;
+          mAreaSeries.Active:=true;
+          mAreaSeries.AreaBrush.Color:=  clBlue;
+          mAreaSeries.AreaContourPen.Color:=  clBlue;
           for i := 0 to m-1 do
             begin
               mAreaSeries.AddXY(answer[i][1], answer[i][2]);
@@ -93,9 +92,9 @@ implementation
 
         {para el area}
       if (area = true) then
+        begin
           mAreaSeries.Clear;
           mAreaSeries.Active:=true;
-        begin
           mAreaSeries.AreaBrush.Color:=  clBlue;
           mAreaSeries.AreaContourPen.Color:=  clBlue;
           for i := 0 to m-1 do
