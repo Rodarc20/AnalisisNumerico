@@ -23,11 +23,7 @@ type
     AreaColorA: TAreaSeries;
     AreaColorB: TAreaSeries;
     Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
     Button4: TButton;
-    CbSetCaret: TComboBox;
-    cbWordWrap: TCheckBox;
     chrGrafica: TChart;
     Plotear2: TLineSeries;
     HistoryList: TListBox;

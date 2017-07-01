@@ -275,53 +275,6 @@ object Form1: TForm1
       ItemHeight = 0
       TabOrder = 1
     end
-    object Button2: TButton
-      Left = 16
-      Height = 25
-      Top = 439
-      Width = 282
-      Anchors = [akLeft, akRight, akBottom]
-      BorderSpacing.InnerBorder = 4
-      Caption = 'Clear'
-      TabOrder = 2
-    end
-    object CbSetCaret: TComboBox
-      Left = 16
-      Height = 29
-      Top = 583
-      Width = 282
-      Anchors = [akLeft, akRight, akBottom]
-      ItemHeight = 21
-      ItemIndex = 0
-      Items.Strings = (
-        'Caret-Line'
-        'Caret-Sub-Bar'
-        'Caret-Big-Bar'
-      )
-      Style = csDropDownList
-      TabOrder = 3
-      Text = 'Caret-Line'
-    end
-    object Button3: TButton
-      Left = 16
-      Height = 25
-      Top = 471
-      Width = 282
-      Anchors = [akLeft, akRight, akBottom]
-      Caption = 'Process'
-      TabOrder = 4
-    end
-    object cbWordWrap: TCheckBox
-      Left = 18
-      Height = 20
-      Top = 508
-      Width = 90
-      Anchors = [akLeft, akBottom]
-      Caption = 'WordWrap'
-      Checked = True
-      State = cbChecked
-      TabOrder = 5
-    end
     object Button4: TButton
       Left = 16
       Height = 35
@@ -330,7 +283,7 @@ object Form1: TForm1
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Iniciar Consola'
       OnClick = Button4Click
-      TabOrder = 6
+      TabOrder = 2
     end
   end
   object resultTable: TStringGrid
