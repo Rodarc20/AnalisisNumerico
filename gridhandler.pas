@@ -60,6 +60,8 @@ implementation
           result.AddStrings(['n', 'Xn', 'Yn', 'k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'h']);
         'gen-newton':
           result.AddStrings(['n', 'Xn', 'Yn', 'Xn+1', 'Yn+1', 'Error']);
+        'ejercicio1':
+          result.AddStrings(['Z', '.00', '.01', '.02', '.03', '.04', '.05', '.06', '.07', '.08', '.09']);
       end;
     end;
 
@@ -73,6 +75,7 @@ implementation
     begin
       m := Length(answer);
       n := Length(answer[0]);
+      ShowMessage(IntToStr(m));
       headers := getHeaders(method);
       mGrid.RowCount := m;
       mGrid.ColCount := headers.Count;

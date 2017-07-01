@@ -136,7 +136,7 @@ object Form1: TForm1
     Font.CharSet = ANSI_CHARSET
     Font.Color = clSilver
     Font.Height = -16
-    Font.Pitch = fpVariable
+    Font.Name = 'Consolas'
     BackGroundColor = clBlack
     TabWidth = 60
     HistoryMax = 10
@@ -333,25 +333,13 @@ object Form1: TForm1
   end
   object resultTable: TStringGrid
     Left = 0
-    Height = 472
+    Height = 600
     Top = 112
     Width = 1606
     ColCount = 11
+    DefaultColWidth = 78
     FixedCols = 0
     RowCount = 2
     TabOrder = 4
-    ColWidths = (
-      108
-      118
-      122
-      134
-      133
-      133
-      140
-      122
-      133
-      116
-      115
-    )
   end
 end
