@@ -542,18 +542,13 @@ begin
     else if entrada[0]='ejercicio3' then
     begin
         LineaComando.Writeln('ln(ln(x)) no existe en x = 1 por lo tanto se esta tomando <1;2]');
-        {funcionString := 'power(exp(1),x)*ln(x)';
-        funcionintegrarString:='ln(ln(x))';
-        }
-        simpson := TSimpson.Create('power(exp(1),x)*ln(x)-ln(ln(x))', 1.0001, 2, 1000);
+        simpson := TSimpson.Create('power(exp(1),x)*ln(x)-ln(ln(x))', 1.0001, 2, 1800);
         res:= simpson.simpson13();
         simpson.Destroy;
         LineaComando.Writeln(FloatToStr(res));
         gridhandler.cleanGrid();
         charthandler.fillChart2(CrearPuntosParaGraficar('power(exp(1),x)*ln(x)', 1.0001, 2, 0.01), CrearPuntosParaGraficar('ln(ln(x))', 1.0001, 2, 0.01), true);
-        {charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));}
     end
-    {modificar simposion para que noe s de el áres}
     else
     begin
         LineaComando.Writeln('Error');
