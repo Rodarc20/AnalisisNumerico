@@ -20,6 +20,7 @@ type
       destructor destroy(); override;
       procedure fillChart(answer: TNumericMatrix; area: Boolean = false);
       procedure fillChart2(answer: TNumericMatrix; answer2: TNumericMatrix; area: Boolean = false);
+      procedure fillChart3(answer: TNumericMatrix; answer2: TNumericMatrix; area: Boolean = false);
       procedure cleanPlot();
   end;
 
@@ -110,6 +111,45 @@ implementation
         end;
     end;
 
+  procedure TChartHandler.fillChart3(answer: TNumericMatrix; answer2: TNumericMatrix; area: Boolean = false);
+  {funcion para graficar el area entre dos funciones}
+    var
+      m: Integer;
+      i: Integer;
+    begin
+        mLineSeries2.LinePen.Color:= clGreen;
+        mLineSeries.Clear;
+        mLineSeries.Active:=true;
+      m := Length(answer);
+      for i := 0 to m-1 do
+        begin
+          mLineSeries.AddXY(answer[i][1], answer[i][2]);
+        end;
+        mLineSeries2.Clear;
+        mLineSeries2.Active:=true;
+      m := Length(answer2);
+      for i := 0 to m-1 do
+        begin
+          mLineSeries2.AddXY(answer2[i][1], answer2[i][2]);
+        end;
+
+        {para el area}
+      if (area = true) then
+        begin
+          mAreaSeries.Clear;
+          mAreaSeries.Active:=true;
+          mAreaSeries.AreaBrush.Color:=  clBlue;
+          mAreaSeries.AreaContourPen.Color:=  clBlue;
+          for i := 0 to m-1 do
+            begin
+              mAreaSeries.AddXY(answer[i][1], answer[i][2]);
+            end;
+          for i := 0 to m-1 do
+            begin
+              mAreaSeries.AddXY(answer2[i][1], answer2[i][2]);
+            end;
+        end;
+    end;
   procedure TChartHandler.cleanPlot();
     begin
       mChart.ClearSeries();

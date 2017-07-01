@@ -162,6 +162,8 @@ procedure TForm1.LineaComandoInput(ACmdBox: TCmdBox; Input: string);
 var entrada: TStringList;
 var equations: TEquationsList;
 var puntos: TMatriz;
+var puntos4a: TMatriz;
+var puntos4b: TMatriz;
 var values: TNumericMatrix;
 var resul: TNumericMatrix;
 var resultado: TArray;
@@ -171,6 +173,7 @@ var id: double;
 var jd: double;
 var res: real;
 var polinomio: string;
+var polinomio2: string;
 begin
     entrada:=TStringList.Create;
     entrada.Delimiter := ' ';
@@ -545,6 +548,60 @@ begin
         {LineaComando.Writeln(FloatToStr(res));}
         gridhandler.cleanGrid();
         charthandler.fillChart2(CrearPuntosParaGraficar('power(exp(1),x)*ln(x)', 1.0001, 2, 0.01), CrearPuntosParaGraficar('ln(ln(x))', 1.0001, 2, 0.01), true);
+    end
+    else if entrada[0]='ejercicio4' then
+    begin
+        LineaComando.Writeln('puntos');
+        SetLength(puntos4a, 2, 6);
+        SetLength(puntos4b, 2, 6);
+        SetLength(puntos, 2, 8);
+        puntos[0][0] := 1;
+        puntos[1][0] := 6.7;
+        puntos[0][1] := 2;
+        puntos[1][1] := 3.1;
+        puntos[0][2] := 3;
+        puntos[1][2] := 0.1;
+        puntos[0][3] := 4;
+        puntos[1][3] := -0.14;
+        puntos[0][4] := 5;
+        puntos[1][4] := 0.13;
+        puntos[0][5] := 6;
+        puntos[1][5] := -4.3;
+        puntos[0][6] := 7;
+        puntos[1][6] := -2.4;
+        puntos[0][7] := 8;
+        puntos[1][7] := -3.2;
+        i:=0; 
+        while i < 6 do
+        begin
+            puntos4a[0][i] := puntos[0][i];
+            puntos4a[1][i] := puntos[1][i];
+            puntos4b[0][i] := puntos[0][i+2];
+            puntos4b[1][i] := puntos[1][i+2];
+            i := i+1;
+        end;
+        lagrange := TLagrange.Create();
+        lagrange.IngresarValores(puntos4a);
+        polinomio:=lagrange.Ejecutar;
+        {LineaComando.Writeln(FloatToStr(f.evaluate(polinomio, StrToFloat(entrada[entrada.Count-1]))));}
+        {evaluar la ultima entrada en el polinomio que devuelve execute}
+        lagrange.Destroy;
+        lagrange := TLagrange.Create();
+        lagrange.IngresarValores(puntos4b);
+        polinomio2:=lagrange.Ejecutar;
+        lagrange.Destroy;
+
+        simpson := TSimpson.Create(polinomio, puntos4a[0][0], puntos4a[0][3], 1800);
+        res:= simpson.simpson38()[1];
+        simpson.Destroy;
+        simpson := TSimpson.Create(polinomio2, puntos4b[0][2], puntos4b[0][5], 1800);
+        res:= res + simpson.simpson38()[1];
+        simpson.Destroy;
+        LineaComando.Writeln(Format('%.8f', [res]));
+        {LineaComando.Writeln(FloatToStr(res));}
+        {charthandler.fillChart2(CrearPuntosParaGraficar(polinomio, puntos4a[0][0], puntos4a[0][3], 0.01), CrearPuntosParaGraficar(polinomio2, puntos4b[0][2], puntos4b[0][5], 0.01), true);}
+        {charthandler.fillChart3(CrearPuntosParaGraficar(polinomio, puntos4a[0][0], (puntos4a[0][3] + puntos4b[0][2])/2, 0.01), CrearPuntosParaGraficar(polinomio2, (puntos4a[0][3] + puntos4b[0][2])/2, puntos4b[0][5], 0.01), false);}
+        charthandler.fillChart3(CrearPuntosParaGraficar(polinomio, puntos4a[0][0], puntos4a[0][5], 0.01), CrearPuntosParaGraficar(polinomio2, puntos4b[0][0], puntos4b[0][5], 0.01), false);
     end
     else
     begin

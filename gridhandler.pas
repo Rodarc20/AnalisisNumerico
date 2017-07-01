@@ -73,7 +73,7 @@ implementation
       i: Integer;
       j: Integer;
     begin
-      m := Length(answer);
+      m := Length(answer) + 1;
       n := Length(answer[0]);
       ShowMessage(IntToStr(m));
       headers := getHeaders(method);
