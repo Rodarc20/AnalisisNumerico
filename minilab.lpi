@@ -41,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="minilab.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -66,6 +66,11 @@
         <Filename Value="methods.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="methods/Simpson/derivada.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Derivada"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

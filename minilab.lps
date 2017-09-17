@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="12">
+    <Units Count="15">
       <Unit0>
         <Filename Value="minilab.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="20"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="67"/>
       </Unit0>
       <Unit1>
         <Filename Value="main.pas"/>
@@ -17,11 +17,10 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="547"/>
-        <CursorPos Y="579"/>
+        <TopLine Value="229"/>
+        <CursorPos Y="229"/>
         <ComponentState Value="2"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -31,14 +30,14 @@
         <UnitName Value="Euler"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="24" Y="13"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="67"/>
       </Unit2>
       <Unit3>
         <Filename Value=".gitignore.txt"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="6" Y="5"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="63"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit3>
       <Unit4>
@@ -46,189 +45,122 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="14"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="56"/>
       </Unit4>
       <Unit5>
+        <Filename Value="methods/Simpson/derivada.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Derivada"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="2"/>
+        <CursorPos X="30" Y="26"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit5>
+      <Unit6>
         <Filename Value="unit1.lfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="16"/>
         <UsageCount Value="6"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit5>
-      <Unit6>
+      </Unit6>
+      <Unit7>
         <Filename Value="minilab.lpi"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="69"/>
         <UsageCount Value="6"/>
         <DefaultSyntaxHighlighter Value="XML"/>
-      </Unit6>
-      <Unit7>
+      </Unit7>
+      <Unit8>
         <Filename Value="gridhandler.pas"/>
         <UnitName Value="GridHandler"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos Y="85"/>
         <UsageCount Value="23"/>
-        <Loaded Value="True"/>
-      </Unit7>
-      <Unit8>
+      </Unit8>
+      <Unit9>
         <Filename Value="charthandler.pas"/>
         <UnitName Value="ChartHandler"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="52"/>
         <CursorPos X="34" Y="72"/>
         <UsageCount Value="23"/>
-        <Loaded Value="True"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="/usr/lib/lazarus/lcl/grids.pas"/>
-        <UnitName Value="Grids"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="9253"/>
-        <CursorPos Y="9249"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
       </Unit9>
       <Unit10>
-        <Filename Value="../componentes/cmdline/ucmdbox.pas"/>
-        <UnitName Value="uCmdBox"/>
+        <Filename Value="/usr/lib/lazarus/lcl/grids.pas"/>
+        <UnitName Value="Grids"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="1098"/>
-        <CursorPos Y="1117"/>
-        <UsageCount Value="17"/>
+        <TopLine Value="9229"/>
+        <CursorPos Y="9249"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
+        <Filename Value="../componentes/cmdline/ucmdbox.pas"/>
+        <UnitName Value="uCmdBox"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1098"/>
+        <CursorPos Y="1117"/>
+        <UsageCount Value="17"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="/usr/lib/lazarus/components/tachart/tagraph.pas"/>
         <UnitName Value="TAGraph"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1715"/>
         <CursorPos Y="1736"/>
         <UsageCount Value="13"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="methods/Common/Matrix.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="10"/>
+        <CursorPos X="5" Y="299"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
-      </Unit11>
+      </Unit13>
+      <Unit14>
+        <Filename Value="methods/Bisection/Bisection.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="80"/>
+        <CursorPos X="13" Y="111"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit14>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="8" HistoryIndex="7">
       <Position1>
         <Filename Value="main.pas"/>
-        <Caret Line="140" Column="32" TopLine="120"/>
+        <Caret Line="229" TopLine="209"/>
       </Position1>
       <Position2>
-        <Filename Value="main.pas"/>
-        <Caret Line="122" Column="5" TopLine="102"/>
+        <Filename Value="methods/Common/Matrix.pas"/>
       </Position2>
       <Position3>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="75" TopLine="55"/>
+        <Filename Value="methods/Common/Matrix.pas"/>
+        <Caret Line="296" Column="19" TopLine="261"/>
       </Position3>
       <Position4>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="70" Column="30" TopLine="31"/>
+        <Filename Value="methods/Simpson/derivada.pas"/>
+        <Caret Line="8" Column="26"/>
       </Position4>
       <Position5>
-        <Filename Value="main.pas"/>
-        <Caret Line="170" Column="53" TopLine="131"/>
+        <Filename Value="methods/Simpson/derivada.pas"/>
+        <Caret Line="12" Column="17"/>
       </Position5>
       <Position6>
-        <Filename Value="main.pas"/>
-        <Caret Line="57" Column="86" TopLine="26"/>
+        <Filename Value="methods/Simpson/derivada.pas"/>
+        <Caret Line="18" Column="10"/>
       </Position6>
       <Position7>
         <Filename Value="main.pas"/>
-        <Caret Line="145" Column="15" TopLine="126"/>
+        <Caret Line="229" TopLine="229"/>
       </Position7>
       <Position8>
-        <Filename Value="main.pas"/>
-        <Caret Line="146" Column="34" TopLine="126"/>
+        <Filename Value="methods/Bisection/Bisection.pas"/>
       </Position8>
-      <Position9>
-        <Filename Value="main.pas"/>
-        <Caret Line="157" Column="18" TopLine="138"/>
-      </Position9>
-      <Position10>
-        <Filename Value="main.pas"/>
-        <Caret Line="158" Column="12" TopLine="139"/>
-      </Position10>
-      <Position11>
-        <Filename Value="main.pas"/>
-        <Caret Line="369" Column="122" TopLine="350"/>
-      </Position11>
-      <Position12>
-        <Filename Value="main.pas"/>
-        <Caret Line="148" Column="5" TopLine="129"/>
-      </Position12>
-      <Position13>
-        <Filename Value="main.pas"/>
-        <Caret Line="381" TopLine="362"/>
-      </Position13>
-      <Position14>
-        <Filename Value="main.pas"/>
-        <Caret Line="187" TopLine="168"/>
-      </Position14>
-      <Position15>
-        <Filename Value="gridhandler.pas"/>
-        <Caret Line="93" TopLine="54"/>
-      </Position15>
-      <Position16>
-        <Filename Value="main.pas"/>
-        <Caret Line="491" Column="23" TopLine="468"/>
-      </Position16>
-      <Position17>
-        <Filename Value="main.pas"/>
-        <Caret Line="8" Column="35"/>
-      </Position17>
-      <Position18>
-        <Filename Value="/usr/lib/lazarus/components/tachart/tagraph.pas"/>
-        <Caret Line="191" Column="29" TopLine="180"/>
-      </Position18>
-      <Position19>
-        <Filename Value="main.pas"/>
-        <Caret Line="8" Column="35"/>
-      </Position19>
-      <Position20>
-        <Filename Value="main.pas"/>
-        <Caret Line="573" Column="50" TopLine="553"/>
-      </Position20>
-      <Position21>
-        <Filename Value="charthandler.pas"/>
-        <Caret Line="51" Column="46" TopLine="24"/>
-      </Position21>
-      <Position22>
-        <Filename Value="main.pas"/>
-        <Caret Line="574" Column="50" TopLine="535"/>
-      </Position22>
-      <Position23>
-        <Filename Value="main.pas"/>
-        <Caret Line="549" Column="38" TopLine="530"/>
-      </Position23>
-      <Position24>
-        <Filename Value="main.pas"/>
-        <Caret Line="548" Column="38" TopLine="529"/>
-      </Position24>
-      <Position25>
-        <Filename Value="main.pas"/>
-        <Caret Line="547" Column="38" TopLine="528"/>
-      </Position25>
-      <Position26>
-        <Filename Value="main.pas"/>
-        <Caret Line="546" Column="38" TopLine="527"/>
-      </Position26>
-      <Position27>
-        <Filename Value="main.pas"/>
-        <Caret Line="545" Column="38" TopLine="526"/>
-      </Position27>
-      <Position28>
-        <Filename Value="main.pas"/>
-        <Caret Line="555" Column="32" TopLine="536"/>
-      </Position28>
-      <Position29>
-        <Filename Value="main.pas"/>
-        <Caret Line="595" Column="36" TopLine="576"/>
-      </Position29>
-      <Position30>
-        <Filename Value="main.pas"/>
-        <Caret Line="576" Column="21" TopLine="556"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

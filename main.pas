@@ -174,6 +174,7 @@ var jd: double;
 var res: real;
 var polinomio: string;
 var polinomio2: string;
+var func: TFunctions;
 begin
     entrada:=TStringList.Create;
     entrada.Delimiter := ' ';
@@ -220,7 +221,6 @@ begin
         end;
         gridhandler.cleanGrid();
         gridhandler.fillGrid(resul, 'bisection');
-        gridhandler.destroy();
         {charthandler.fillchart(resul);}
     end
     else if entrada[0]='falsaposicion' then
@@ -228,7 +228,7 @@ begin
         {ecuacion, a, b, error}
         falsaposicion:= TFalsePosition.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToFloat(entrada[4]));
         resul:= falsaposicion.execute;
-        LineaComando.Writeln('falsaposicion');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][3]));
         falsaposicion.Destroy;
 
         funcionString := entrada[1];
@@ -251,7 +251,7 @@ begin
         {ecuacion, x, error}
         secante:= TSecant.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]));
         resul:= secante.execute;
-        LineaComando.Writeln('secante');
+        LineaComando.Writeln(FloatToStr(resul[Length(resul)-1][3]));
         secante.Destroy;
         funcionString := entrada[1];
         with Funcion do begin
@@ -277,6 +277,20 @@ begin
         LineaComando.Writeln('puntofijo');
         puntofijo.Destroy;
         funcionString := entrada[1];
+        with Funcion do begin
+          Active:= False;
+
+          Extent.XMax:= 10;
+          Extent.XMin:= -10;
+
+          Extent.UseXMax:= true;
+          Extent.UseXMin:= true;
+          Funcion.Pen.Color:=  clBlue;
+
+          Active:= True;
+        end;
+        gridhandler.cleanGrid();
+        gridhandler.fillGrid(resul, 'fixed-point');
 
     end
     else if entrada[0]='newton' then
@@ -474,33 +488,11 @@ begin
     begin
         LineaComando.Clear;
     end
-    else if entrada[0]='ejercicio1' then
+    else if entrada[0]='evaluar' then
     begin
-        LineaComando.Writeln('tabla z');
-        resul:= TNumericMatrix.Create;
-        SetLength(resul, 40, 11);
-        i:=0;
-        id := 0;{avanza en 0.1}
-        while(id <= 4) do
-        begin
-            resul[i][0]:=id;
-            j:=1;
-            jd := 0;{avanza como 0.01}
-            while(jd < 0.1) do 
-            begin
-                simpson := TSimpson.Create('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, id+jd, 1000);
-                resul[i][j] := simpson.simpson13();
-                simpson.Destroy;
-                j:= j+ 1;
-                jd:= jd+0.01;
-            end;
-            i:= i + 1;
-            id:= id+0.1;
-        end;
-        {simpson := TSimpson.Create(entrada[1], StrToFloat(entrada[2]), StrToFloat(entrada[3]), StrToInt(entrada[4]));}
-        charthandler.fillChart(CrearPuntosParaGraficar('1/power(2*pi,0.5)*power(exp(1),-1/2*power(x,2))', -10, 10, 0.01));
-        gridhandler.cleanGrid();
-        gridhandler.fillGrid(resul, 'ejercicio1');
+        func:= TFunctions.create;
+        LineaComando.Writeln(FloatToStr(func.evaluate(entrada[1], StrToFloat(entrada[2]))));
+        func.destroy;
     end
     else if entrada[0]='ejercicio2a' then
     begin
